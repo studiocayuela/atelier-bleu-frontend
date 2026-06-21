@@ -1,0 +1,478 @@
+/* ============================================
+   ATELIER NUMÉRIQUE — feuille de style blueprint
+   ============================================ */
+
+:root {
+  --paper: #EFEDE6;
+  --paper-line: #DCD8CC;
+  --blueprint: #1B3A5C;
+  --blueprint-deep: #112A45;
+  --ink: #14171A;
+  --signal: #FF5A1F;
+  --slate: #6B7785;
+  --hairline: #C7D2D9;
+  --card: #FAF9F5;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --radius: 2px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image:
+    linear-gradient(var(--paper-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ---------- Typography ---------- */
+
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 4.4rem); line-height: 1.02; }
+h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.08; }
+h3 { font-size: 1.25rem; }
+
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blueprint);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--signal);
+}
+
+p { color: var(--slate); margin: 0 0 1em; }
+
+/* ---------- Header ---------- */
+
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(239, 237, 230, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.logo .dot { color: var(--signal); }
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.nav-links a {
+  color: var(--ink);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease;
+}
+.nav-links a:hover { border-color: var(--signal); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 11px 20px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn:hover { background: var(--ink); color: var(--paper); }
+
+.btn-signal {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--paper);
+}
+.btn-signal:hover { background: var(--blueprint-deep); border-color: var(--blueprint-deep); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  padding: 110px 0 90px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero h1 span { color: var(--blueprint); }
+
+.hero-sub {
+  font-size: 1.1rem;
+  max-width: 480px;
+  margin-top: 18px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+/* blueprint diagram on hero */
+.blueprint-card {
+  background: var(--blueprint);
+  color: var(--paper);
+  border-radius: var(--radius);
+  padding: 28px;
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.blueprint-card .tag {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--signal);
+  border: 1px solid var(--signal);
+  padding: 2px 8px;
+}
+
+.blueprint-card ul {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+.blueprint-card li {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-top: 1px dashed rgba(255,255,255,0.25);
+}
+.blueprint-card li:first-child { border-top: none; }
+.blueprint-card li span:last-child { color: rgba(255,255,255,0.6); }
+
+/* ---------- Section shell ---------- */
+
+section { padding: 90px 0; }
+section.alt { background: var(--card); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.section-head p { max-width: 420px; margin: 0; }
+
+/* dimension-line divider */
+.dim-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--slate);
+  margin: 14px 0 50px;
+}
+.dim-line::before, .dim-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
+}
+
+/* ---------- Process (workflow) ---------- */
+
+.process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--hairline);
+}
+
+.process .step {
+  padding: 28px 24px;
+  border-right: 1px solid var(--hairline);
+  position: relative;
+}
+.process .step:last-child { border-right: none; }
+
+.process .num {
+  font-family: var(--font-mono);
+  color: var(--signal);
+  font-size: 0.8rem;
+}
+
+.process .step h3 { margin: 10px 0 8px; font-size: 1.05rem; }
+.process .step p { font-size: 0.9rem; margin: 0; }
+
+/* ---------- Portfolio ---------- */
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.case {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.case:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(20,23,26,0.08); }
+
+.case .thumb {
+  height: 160px;
+  background: linear-gradient(135deg, var(--blueprint), var(--blueprint-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+.case-body { padding: 20px; }
+.case-body .eyebrow { margin-bottom: 6px; font-size: 0.7rem; }
+.case-body h3 { margin-bottom: 6px; }
+.case-body p { font-size: 0.9rem; margin-bottom: 0; }
+
+/* ---------- Pricing (signature element) ---------- */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.spec-card {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--ink);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.spec-card::before, .spec-card::after,
+.spec-card .crop-tl, .spec-card .crop-br { content: ""; }
+
+/* corner crop marks */
+.spec-card { position: relative; }
+.spec-card .crop {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--ink);
+}
+.spec-card .crop.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.spec-card .crop.tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.spec-card .crop.bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.spec-card .crop.br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+.spec-card.featured {
+  background: var(--blueprint);
+  color: var(--paper);
+  border-color: var(--blueprint);
+}
+.spec-card.featured .crop { border-color: var(--paper); }
+.spec-card.featured p, .spec-card.featured .price small { color: rgba(255,255,255,0.65); }
+.spec-card.featured .eyebrow { color: var(--signal); }
+
+.spec-card .eyebrow { margin-bottom: 18px; }
+
+.spec-card .price {
+  font-family: var(--font-mono);
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 6px 0 4px;
+}
+.spec-card .price small {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--slate);
+}
+
+.spec-card .desc { font-size: 0.9rem; margin-bottom: 24px; }
+
+.spec-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  flex: 1;
+}
+.spec-card li {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px dashed var(--hairline);
+}
+.spec-card.featured li { border-top: 1px dashed rgba(255,255,255,0.25); }
+.spec-card li:first-child { border-top: none; }
+.spec-card li::before { content: "—"; color: var(--signal); }
+
+.spec-card .btn { justify-content: center; width: 100%; }
+
+/* ---------- FAQ ---------- */
+
+.faq-item {
+  border-bottom: 1px solid var(--hairline);
+  padding: 22px 0;
+}
+.faq-item h3 { font-size: 1.02rem; margin-bottom: 8px; }
+.faq-item p { margin: 0; font-size: 0.92rem; }
+
+/* ---------- Footer ---------- */
+
+footer.site {
+  border-top: 1px solid var(--hairline);
+  padding: 50px 0 36px;
+}
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.footer-grid .mono { font-size: 0.8rem; color: var(--slate); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .process { grid-template-columns: 1fr 1fr; }
+  .process .step:nth-child(2) { border-right: none; }
+  .portfolio-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+
+/* ---------- Forms (commande page) ---------- */
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 40px;
+}
+
+label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blueprint);
+  margin-bottom: 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: var(--paper);
+  margin-bottom: 22px;
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--blueprint);
+  outline-offset: 1px;
+}
+
+textarea { resize: vertical; min-height: 110px; }
+
+.form-status {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  margin-top: 14px;
+}
+.form-status.ok { color: #1B5E3A; }
+.form-status.err { color: var(--signal); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}

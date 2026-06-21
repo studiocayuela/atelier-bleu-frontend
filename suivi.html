@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suivi de commande — Atelier Bleu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site">
+  <nav class="nav">
+    <a href="index.html" class="logo">ATELIER<span class="dot">.</span>BLEU</a>
+    <div></div>
+    <a href="index.html" class="btn">← Accueil</a>
+  </nav>
+</header>
+
+<section style="padding-top:70px;">
+  <div class="wrap" style="max-width: 620px;">
+    <div class="eyebrow">Suivi de commande</div>
+    <h2 style="margin-bottom: 30px;">Où en est votre projet ?</h2>
+
+    <div id="loading" class="mono" style="color:var(--slate)">Chargement…</div>
+
+    <div id="result" class="form-card" style="display:none;">
+      <div class="eyebrow" id="forfait-label"></div>
+      <h3 id="status-label" style="margin-bottom: 14px;"></h3>
+      <p class="mono" id="dates" style="font-size:0.82rem;"></p>
+    </div>
+
+    <div id="error" class="form-card" style="display:none;">
+      <p>Aucune commande ne correspond à ce lien. Vérifiez l'URL reçue par e-mail, ou contactez-nous à
+        <a href="mailto:contact@atelierbleu.fr" style="text-decoration:underline;">contact@atelierbleu.fr</a>.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap footer-grid">
+    <div class="mono">ATELIER.BLEU — Fort-de-France, Martinique</div>
+    <div class="mono">contact@atelierbleu.fr</div>
+  </div>
+</footer>
+
+<script>
+  // Même adresse de backend que dans js/main.js — pensez à la mettre à jour.
+  const API_BASE = "https://VOTRE-BACKEND.exemple.com";
+
+  const STATUS_LABELS = {
+    "reçue": "Demande reçue, en attente de traitement",
+    "en cours": "Site en cours de création",
+    "relecture": "En relecture / finitions",
+    "livré": "Site livré ✅",
+  };
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+    const loading = document.getElementById("loading");
+    const result = document.getElementById("result");
+    const errorBox = document.getElementById("error");
+
+    if (!token) {
+      loading.style.display = "none";
+      errorBox.style.display = "block";
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}/api/orders/${token}`);
+      if (!res.ok) throw new Error("not found");
+      const order = await res.json();
+
+      document.getElementById("forfait-label").textContent = "Forfait " + order.forfaitLabel;
+      document.getElementById("status-label").textContent = STATUS_LABELS[order.status] || order.status;
+      document.getElementById("dates").textContent =
+        "Reçue le " + new Date(order.createdAt).toLocaleDateString("fr-FR") +
+        " — Dernière mise à jour le " + new Date(order.updatedAt).toLocaleDateString("fr-FR");
+
+      loading.style.display = "none";
+      result.style.display = "block";
+    } catch (e) {
+      loading.style.display = "none";
+      errorBox.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>
