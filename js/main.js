@@ -4,15 +4,15 @@
 
 // 1) Adresse de votre backend une fois déployé (Vercel/Railway/Render...).
 //    En local pendant les tests : http://localhost:3000
-const API_BASE = "https://VOTRE-BACKEND.exemple.com";
+const API_BASE = "https://atelier-bleu-production.up.railway.app";
 
 // 2) Liens de paiement Stripe pour chaque forfait.
 //    À créer dans le Dashboard Stripe > Payment Links (aucun code requis).
 //    Pensez à régler le "redirect" du Payment Link vers merci.html dans Stripe.
 const STRIPE_LINKS = {
-  "essentiel": "https://buy.stripe.com/REMPLACER_ESSENTIEL",
-  "pro": "https://buy.stripe.com/REMPLACER_PRO",
-  "sur-mesure": "https://buy.stripe.com/REMPLACER_SUR_MESURE"
+  "essentiel": "https://buy.stripe.com/test_aFaeV69xN4Yf6dCaFj3oA00",
+  "pro": "https://buy.stripe.com/test_14A8wI39p3UbeK800F3oA01",
+  "sur-mesure": "https://buy.stripe.com/test_8x2cMYeS7duL6dC5kZ3oA02"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
