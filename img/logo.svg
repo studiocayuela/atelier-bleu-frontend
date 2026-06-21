@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 110" role="img" aria-label="Atelier Bleu">
+<rect x="20" y="18" width="64" height="64" fill="none" stroke="#1B3A5C" stroke-width="1.4"/>
+
+<path d="M20 30 L20 18 L32 18" fill="none" stroke="#FF5A1F" stroke-width="2.4" stroke-linecap="square"/>
+<path d="M72 18 L84 18 L84 30" fill="none" stroke="#FF5A1F" stroke-width="2.4" stroke-linecap="square"/>
+<path d="M84 70 L84 82 L72 82" fill="none" stroke="#FF5A1F" stroke-width="2.4" stroke-linecap="square"/>
+<path d="M32 82 L20 82 L20 70" fill="none" stroke="#FF5A1F" stroke-width="2.4" stroke-linecap="square"/>
+
+<line x1="36" y1="35" x2="68" y2="65" stroke="#C7D2D9" stroke-width="0.7"/>
+<line x1="68" y1="35" x2="36" y2="65" stroke="#C7D2D9" stroke-width="0.7"/>
+
+<text x="52" y="56" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="#1B3A5C" letter-spacing="0.5">AB</text>
+
+<text x="110" y="58" font-family="Arial, sans-serif" font-weight="700" font-size="32" fill="#14171A" letter-spacing="1">ATELIER<tspan fill="#FF5A1F">.</tspan><tspan fill="#1B3A5C">BLEU</tspan></text>
+</svg>
